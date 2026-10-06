@@ -1,0 +1,22 @@
+[
+    {
+        "student_id": "ST001",
+        "date": "2026-10-01",
+        "status": "Present"
+    },
+    {
+        "student_id": "ST001",
+        "date": "2026-10-02",
+        "status": "Present"
+    },
+    {
+        "student_id": "ST001",
+        "date": "2026-10-03",
+        "status": "Absent"
+    },
+    {
+        "student_id": "ST002",
+        "date": "2026-10-01",
+        "status": "Present"
+    }
+]

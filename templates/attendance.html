@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+Attendance
+{% endblock %}
+
+{% block content %}
+
+<h1>Mark Attendance</h1>
+
+<form
+    method="POST"
+    action="{{ url_for('add_attendance') }}"
+    class="form"
+>
+
+    <label>
+        Student
+    </label>
+
+    <select
+        name="student_id"
+        required
+    >
+
+        <option value="">
+            Select Student
+        </option>
+
+        {% for student in students %}
+
+        <option value="{{ student.student_id }}">
+
+            {{ student.student_id }}
+            -
+            {{ student.name }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <label>
+        Date
+    </label>
+
+    <input
+        type="date"
+        name="date"
+        required
+    >
+
+    <label>
+        Status
+    </label>
+
+    <select
+        name="status"
+        required
+    >
+
+        <option value="Present">
+            Present
+        </option>
+
+        <option value="Absent">
+            Absent
+        </option>
+
+    </select>
+
+    <button
+        type="submit"
+        class="button"
+    >
+        Mark Attendance
+    </button>
+
+</form>
+
+{% endblock %}

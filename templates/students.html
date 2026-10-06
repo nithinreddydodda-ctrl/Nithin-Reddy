@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}
+Students - Attendance Expert System
+{% endblock %}
+
+
+{% block content %}
+
+<div class="page-header">
+
+    <div>
+        <h1>Students</h1>
+
+        <p>
+            Manage student information and attendance records.
+        </p>
+    </div>
+
+    <a
+        href="{{ url_for('add_student') }}"
+        class="button"
+    >
+        + Add Student
+    </a>
+
+</div>
+
+
+<!-- ==================================================
+     SEARCH
+     ================================================== -->
+
+<div class="card">
+
+    <h3>Search Students</h3>
+
+    <input
+        type="text"
+        id="studentSearch"
+        placeholder="Search by name, ID, or course..."
+        onkeyup="searchStudents()"
+        style="
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 7px;
+            font-size: 14px;
+        "
+    >
+
+</div>
+
+
+<!-- ==================================================
+     STUDENT TABLE
+     ================================================== -->
+
+<div style="margin-top: 25px;">
+
+    {% if students %}
+
+    <table id="studentTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Student ID</th>
+
+                <th>Name</th>
+
+                <th>Email</th>
+
+                <th>Course</th>
+
+                <th>Attendance</th>
+
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            {% for student in students %}
+
+            <tr>
+
+                <td>
+                    <strong>
+                        {{ student.id }}
+                    </strong>
+                </td>
+
+
+                <td>
+                    {{ student.name }}
+                </td>
+
+
+                <td>
+                    {{ student.email }}
+                </td>
+
+
+                <td>
+                    {{ student.course }}
+                </td>
+
+
+                <td>
+
+                    {% if student.attendance_percentage is defined %}
+
+                        {% if student.attendance_percentage >= 75 %}
+
+                            <span class="present">
+                                {{ student.attendance_percentage }}%
+                            </span>
+
+                        {% elif student.attendance_percentage >= 60 %}
+
+                            <span
+                                style="
+                                    color: #d97706;
+                                    background: #fef3c7;
+                                    padding: 5px 10px;
+                                    border-radius: 20px;
+                                    font-weight: 700;
+                                "
+                            >
+                                {{ student.attendance_percentage }}%
+                            </span>
+
+                        {% else %}
+
+                            <span class="absent">
+                                {{ student.attendance_percentage }}%
+                            </span>
+
+                        {% endif %}
+
+                    {% else %}
+
+                        <span>
+                            Not Available
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+
+                <td>
+
+                    <a
+                        href="{{ url_for(
+                            'attendance',
+                            student_id=student.id
+                        ) }}"
+                        class="button small"
+                    >
+                        Attendance
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+
+    {% else %}
+
+    <div class="card empty">
+
+        <h2>No Students Found</h2>
+
+        <p>
+            There are currently no students in the system.
+        </p>
+
+        <br>
+
+        <a
+            href="{{ url_for('add_student') }}"
+            class="button"
+        >
+            Add First Student
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

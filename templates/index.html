@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h1>Student Attendance Dashboard</h1>
+
+<div class="cards">
+
+    <div class="card">
+
+        <h3>Total Students</h3>
+
+        <p class="number">
+            {{ total_students }}
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Expert System</h3>
+
+        <p>
+            Rule-Based Attendance Analysis
+        </p>
+
+    </div>
+
+</div>
+
+<div class="welcome">
+
+    <h2>Welcome</h2>
+
+    <p>
+        This system manages student attendance
+        and automatically analyzes attendance
+        using rule-based expert system rules.
+    </p>
+
+</div>
+
+{% endblock %}

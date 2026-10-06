@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Eligible",
+        "condition": "attendance >= 75",
+        "message": "Student has satisfactory attendance.",
+        "recommendation": "Student is eligible for regular academic activities."
+    },
+    {
+        "name": "Short Attendance",
+        "condition": "attendance >= 60 and attendance < 75",
+        "message": "Student has short attendance.",
+        "recommendation": "Student should attend more classes."
+    },
+    {
+        "name": "Critical Attendance",
+        "condition": "attendance < 60",
+        "message": "Student has critically low attendance.",
+        "recommendation": "Immediate attendance improvement is required."
+    }
+]

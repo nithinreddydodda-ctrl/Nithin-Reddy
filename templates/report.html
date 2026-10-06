@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}
+Attendance Report
+{% endblock %}
+
+{% block content %}
+
+<h1>Attendance Report</h1>
+
+<div class="student-info">
+
+    <h2>
+        {{ student.name }}
+    </h2>
+
+    <p>
+        Student ID:
+        {{ student.student_id }}
+    </p>
+
+    <p>
+        Class:
+        {{ student.student_class }}
+    </p>
+
+    <p>
+        Department:
+        {{ student.department }}
+    </p>
+
+</div>
+
+
+<div class="cards">
+
+    <div class="card">
+
+        <h3>Total Days</h3>
+
+        <p class="number">
+            {{ result.total_days }}
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Present</h3>
+
+        <p class="number green">
+            {{ result.present_days }}
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Absent</h3>
+
+        <p class="number red">
+            {{ result.absent_days }}
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Attendance</h3>
+
+        <p class="number">
+            {{ result.attendance_percentage }}%
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="analysis">
+
+    <h2>
+        Expert System Result
+    </h2>
+
+    <div class="status">
+
+        {{ result.status }}
+
+    </div>
+
+    <p>
+        <strong>Analysis:</strong>
+        {{ result.message }}
+    </p>
+
+    <p>
+        <strong>Recommendation:</strong>
+        {{ result.recommendation }}
+    </p>
+
+</div>
+
+
+<h2>Attendance Records</h2>
+
+<table>
+
+    <thead>
+
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for record in records %}
+
+        <tr>
+
+            <td>
+                {{ record.date }}
+            </td>
+
+            <td>
+
+                {% if record.status == "Present" %}
+
+                    <span class="present">
+                        Present
+                    </span>
+
+                {% else %}
+
+                    <span class="absent">
+                        Absent
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% else %}
+
+        <tr>
+
+            <td colspan="2">
+                No attendance records.
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

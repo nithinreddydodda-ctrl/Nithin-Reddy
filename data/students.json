@@ -1,0 +1,18 @@
+[
+    {
+        "student_id": "ST001",
+        "name": "Rahul Sharma",
+        "class": "BCA",
+        "year": 1,
+        "department": "Computer Applications",
+        "email": "rahul@gmail.com"
+    },
+    {
+        "student_id": "ST002",
+        "name": "Priya Patel",
+        "class": "BCA",
+        "year": 2,
+        "department": "Computer Applications",
+        "email": "priya@gmail.com"
+    }
+]

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Rule-Based Student Attendance Management System"
+    >
+
+    <title>
+        {% block title %}
+        Student Attendance Expert System
+        {% endblock %}
+    </title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         NAVIGATION BAR
+         ================================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            🎓 Attendance Expert System
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('index') }}">
+                Dashboard
+            </a>
+
+            <a href="{{ url_for('students') }}">
+                Students
+            </a>
+
+            <a href="{{ url_for('add_student') }}">
+                Add Student
+            </a>
+
+            <a href="{{ url_for('attendance') }}">
+                Attendance
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==================================================
+         MAIN CONTENT
+         ================================================== -->
+
+    <main class="container">
+
+        <!-- Flash Messages -->
+
+        {% with messages =
+            get_flashed_messages(
+                with_categories=true
+            )
+        %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div
+                            class="alert {{ category }}"
+                            role="alert"
+                        >
+
+                            <span>
+                                {{ message }}
+                            </span>
+
+                            <button
+                                type="button"
+                                class="close-alert"
+                                onclick="this.parentElement.remove()"
+                            >
+                                &times;
+                            </button>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- Page Content -->
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <!-- ==================================================
+         FOOTER
+         ================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Student Attendance Expert System
+        </p>
+
+        <p>
+            Rule-Based Expert System
+        </p>
+
+    </footer>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+</body>
+
+</html>
