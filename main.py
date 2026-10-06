@@ -7,6 +7,9 @@ from flask import (
     flash
 )
 
+import os
+import secrets
+
 import config
 
 from models.student import Student
@@ -21,7 +24,7 @@ from expert_system.attendance_analyzer import (
 
 app = Flask(__name__)
 
-app.secret_key = "student-attendance-secret-key"
+app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
 
 
 student_service = StudentService(
